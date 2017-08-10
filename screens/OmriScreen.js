@@ -8,7 +8,7 @@ export default class OmriScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text>Omris new screen</Text>
+        <Text>Omris new screen 1</Text>
      </View>
     );
   }

@@ -1,19 +1,36 @@
  
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet,Text,Button } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import MyList from '../components/Lists/MyList.js';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'my second page',
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {myText: 'First text'}
+  }
+  onPress() {
+      this.setState({myText: 'Second text'})
+  }
 
   render() {
     return (
       <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
+         <Text>{this.state.myText}</Text>
+
+         <Button style={styles.pushButton}
+          onPress={() => this.onPress()}
+          title="My New Button"
+          color="#841584"
+        />
+
+        <MyList initialText='This is the firxt text' />
+
       </ScrollView>
     );
   }

@@ -26,6 +26,7 @@ export default TabNavigator(
     }
   },
   {
+    initialRoutName: 'Omri',
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;

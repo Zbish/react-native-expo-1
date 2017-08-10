@@ -16,10 +16,8 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
-rr
-  render() {
-    console.log('Hi from React Native i am omri');
 
+  render() {
     return (
 	
       <View style={styles.container}>
@@ -28,11 +26,7 @@ rr
           contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/sickFpood.jpg')
-                  : require('../assets/images/sickFpood.jpg')
-              }
+              source={require('../assets/images/sickFpood.jpg')}
               style={styles.welcomeImage}
             />
           </View>

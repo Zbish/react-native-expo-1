@@ -1,6 +1,6 @@
 import React from 'react';
 import MyListItem from './MyListItem.js';
-
+import RecepieService from '../../services/recepie.js';
 
 import {
   View,
@@ -20,6 +20,8 @@ export default class MyList extends React.Component {
     var {data} = this.state;
     data.push({key: this.state.currentValue});
     this.setState({data: data});
+    RecepieService.save("dfgdfsdfsd");
+
   }
 
   onChange(val) {

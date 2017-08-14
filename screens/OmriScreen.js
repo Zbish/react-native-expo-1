@@ -25,9 +25,9 @@ export default class OmriScreen extends React.Component {
     console.log("Rendered");
     return (
       <View>
-        <Text  style={styles.bigblue}>Omris new screen 1</Text>
-        <Text style={styles.red}>Omris new screen 1</Text>
+        <Text  style={styles.bigblue}>To Do List</Text>
         <MyList />
+        <MyList initialText='This is the firxt text' />
      </View>
     );
   }
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     color: 'blue',
     fontWeight: 'bold',
     fontSize: 30,
+    textAlign:'center',
   },
   red: {
     color: 'red',

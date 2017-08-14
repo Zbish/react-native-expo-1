@@ -6,8 +6,7 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import newPage from '../screens/newPage';
 import OmriScreen from '../screens/OmriScreen';
 
 export default TabNavigator(
@@ -15,12 +14,10 @@ export default TabNavigator(
     Home: {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
+    newPage: {
+      screen: newPage,
     },
-    Settings: {
-      screen: SettingsScreen,
-    },
+    
     Omri: {
       screen: OmriScreen,
     }
@@ -37,15 +34,10 @@ export default TabNavigator(
               ? `ios-information-circle${focused ? '' : '-outline'}`
               : 'md-information-circle';
             break;
-          case 'Links':
+          case 'newPage':
             iconName = Platform.OS === 'ios'
               ? `ios-link${focused ? '' : '-outline'}`
               : 'md-link';
-            break;
-          case 'Settings':
-            iconName = Platform.OS === 'ios'
-              ? `ios-options${focused ? '' : '-outline'}`
-              : 'md-options';
             break;
           case 'Omri':
             iconName = Platform.OS === 'ios'

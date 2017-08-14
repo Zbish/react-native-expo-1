@@ -11,18 +11,29 @@ import {
 export default class MyListItem extends React.Component {
 
     onRemovePress() {
-
+    var a = this.props.item.key;
+     console.log(a);
+    // var {data} = this.state;
+    // data.splice(0,1);
+    // this.setState({data:data});
     }
 
     onEditPress() {
-
+    // var {data} = this.state;
+    // data.push({key: this.state.currentValue});
+    // data.shift()
+    // this.setState({data: data});
     }
     
     render() {
         return <View style={styles.container}>
-                    <Text style={styles.text}>{this.props.item.key} ffffffddd</Text>
-                    <Button title="Edit"></Button>
-                    <Button title="X"></Button>
+                    <Text style={styles.text}>{this.props.item.key}</Text>
+                    <Button title="Edit"
+                     onPress={() => this.onEditPress()}
+                    ></Button>
+                    <Button title="X"
+                    onPress={() =>this.onRemovePress()}
+                    ></Button>
                 </View>
     }
 }

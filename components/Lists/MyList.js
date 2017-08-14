@@ -12,7 +12,7 @@ import {
 
 export default class MyList extends React.Component {
   componentWillMount() {
-    this.setState({data : [{key: 'a'}, {key: 'b'}],
+    this.setState({data : [],
                     currentValue: this.props.initialText});
   }
 
@@ -21,7 +21,8 @@ export default class MyList extends React.Component {
     data.push({key: this.state.currentValue});
     this.setState({data: data});
     RecepieService.save("dfgdfsdfsd");
-
+    this.setState({currentValue: ""})
+    console.log(data);
   }
 
   onChange(val) {

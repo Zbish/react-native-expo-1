@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 export default class MyList extends React.Component {
+ 
   componentWillMount() {
     this.setState({data : [],
                     currentValue: this.props.initialText});
@@ -28,7 +29,34 @@ export default class MyList extends React.Component {
   onChange(val) {
     this.setState({currentValue: val})
   }
-
+onRemoveItem(key4) {
+    var {data} = this.state;
+    var index;
+  for(i = 0 ; i < data.length ; i++)
+    {
+      if(data[i].key == key4)
+        {
+         data.splice(i,1);
+         break;
+        }
+      
+    }
+    this.setState({data:data});
+    }
+  onEditPress(key4,value) {
+        var {data} = this.state;
+    var index;
+  for(i = 0 ; i < data.length ; i++)
+    {
+      if(data[i].key == key4)
+        {
+         data[i].key = value;
+         break;
+        }
+      
+    }
+    this.setState({data:data});
+    }
   render() {
     return (
       <View>
@@ -44,7 +72,10 @@ export default class MyList extends React.Component {
         />
         {
           this.state.data.map((item, index) => {
-            return <MyListItem key={index} item={item} />
+            return <MyListItem key={index} item={item} 
+            onRemove={(key)=>this.onRemoveItem(key)}
+            onEdit={(key,textv)=>this.onEditPress(key,textv)}
+            />
           })
         }
      </View>

@@ -34,7 +34,6 @@ export default class LinksScreen extends React.Component {
               title="go"
               color="#841584"/>
               <View style={styles.robot_pic}
-             
               >
                     <Image
               source={require('../assets/images/robot-prod.png')}

@@ -26,8 +26,7 @@ export default class OmriScreen extends React.Component {
     return (
       <View>
         <Text  style={styles.bigblue}>To Do List</Text>
-        <MyList />
-        <MyList initialText='This is the firxt text' />
+        <MyList placeholder='This is the firxt text' />
      </View>
     );
   }

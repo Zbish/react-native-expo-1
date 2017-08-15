@@ -9,30 +9,30 @@ import {
 
 
 export default class MyListItem extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { text: '' };
+ 
+  }
+// onPress()
+// {
+//     this.state = '';
+// }
 
-    onRemovePress() {
-    var a = this.props.item.key;
-     console.log(a);
-    // var {data} = this.state;
-    // data.splice(0,1);
-    // this.setState({data:data});
-    }
-
-    onEditPress() {
-    // var {data} = this.state;
-    // data.push({key: this.state.currentValue});
-    // data.shift()
-    // this.setState({data: data});
-    }
-    
     render() {
         return <View style={styles.container}>
                     <Text style={styles.text}>{this.props.item.key}</Text>
+                     <TextInput style={styles.text}
+                      onChangeText={(text) => this.setState({text})}
+                        value={this.state.text}
+                        
+                       />
                     <Button title="Edit"
-                     onPress={() => this.onEditPress()}
+                    onPress={() =>this.props.onEdit(this.props.item.key,this.state.text)}
                     ></Button>
                     <Button title="X"
-                    onPress={() =>this.onRemovePress()}
+                    onPress={() =>this.props.onRemove(this.props.item.key)}
                     ></Button>
                 </View>
     }

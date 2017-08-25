@@ -1,7 +1,7 @@
 import React from 'react';
 import MyListItem from './MyListItem.js';
 import RecepieService from '../../services/recepie.js';
-
+import { Keyboard} from 'react-native';
 import {
   View,
   Text,
@@ -15,8 +15,13 @@ export default class MyList extends React.Component {
   componentWillMount() {
     this.setState({data : [],
                     currentValue: this.props.initialText});
+   this.setState({dataDelete : [],
+                      currentValue2: this.props.initialText});
   }
+  addToDelete()
+  {
 
+  }
   onPress() {
     var {data} = this.state;
     data.push({key: this.state.currentValue});
@@ -31,16 +36,19 @@ export default class MyList extends React.Component {
   }
 onRemoveItem(key4) {
     var {data} = this.state;
+    var {dataDelete} = this.state;
     var index;
   for(i = 0 ; i < data.length ; i++)
     {
       if(data[i].key == key4)
         {
+         dataDelete.push({key:data[i]});
          data.splice(i,1);
          break;
         }
       
     }
+    this.setState({dataDelete:dataDelete});
     this.setState({data:data});
     }
   onEditPress(key4,value) {
@@ -57,18 +65,21 @@ onRemoveItem(key4) {
     }
     this.setState({data:data});
     }
+    handleKeyDown=()=> {
+        var {data} = this.state;
+        data.push({key: this.state.currentValue});
+        this.setState({data: data});
+        RecepieService.save("dfgdfsdfsd");
+        this.setState({currentValue: ""})
+        console.log(data);
+  }
   render() {
     return (
       <View>
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+         <TextInput underLineColorAndroid='transparent'  placeholderTextColor="black" placeholder='Add to List' style={styles.textInput}
           onChangeText={(val) => this.onChange(val)}
           value={this.state.currentValue}
-        />
-        <Button style={styles.pushButton}
-          onPress={() => this.onPress()}
-          title="Learn More11"
-          color="#841584"
+          onSubmitEditing={this.handleKeyDown}
         />
         {
           this.state.data.map((item, index) => {
@@ -78,18 +89,32 @@ onRemoveItem(key4) {
             />
           })
         }
+        <Text style={styles.finish}
+        >Finish Task </Text>
      </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
+  textInput:{
+    color:'#000000',
+    alignSelf:'stretch',
+    padding:8,
+    marginBottom:10,
+    backgroundColor:'rgba(122, 186, 122,0.7)',
+    borderColor:'#fff',
+    borderRadius:10,
+    borderWidth:0.6,
+    },
+  finish:{
+    color:'#000000',
+    alignSelf:'center',
+    padding:5,
+    marginBottom:10,
+    marginTop:15,
+    backgroundColor:'rgba(122, 186, 122,0.7)',
+    borderColor:'#fff',
+    borderRadius:20,
+    borderWidth:0.6,
   },
-  red: {
-    color: 'red',
-  },
-
 });

@@ -8,11 +8,15 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import newPage from '../screens/newPage';
 import OmriScreen from '../screens/OmriScreen';
+import Login from '../screens/Login';
 
 export default TabNavigator(
   {
     Home: {
       screen: HomeScreen,
+    },
+    Login: {
+      screen: Login,
     },
     newPage: {
       screen: newPage,
@@ -35,6 +39,11 @@ export default TabNavigator(
               : 'md-information-circle';
             break;
           case 'newPage':
+            iconName = Platform.OS === 'ios'
+              ? `ios-link${focused ? '' : '-outline'}`
+              : 'md-link';
+            break;
+            case 'Login':
             iconName = Platform.OS === 'ios'
               ? `ios-link${focused ? '' : '-outline'}`
               : 'md-link';
